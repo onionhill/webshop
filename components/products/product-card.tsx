@@ -5,21 +5,7 @@ import { useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { ProductImageDialog } from "./product-image-dialog";
 import { ProductPrice } from "./product-price";
-
-interface Product {
-  name: string;
-  slug: string;
-  category: string;
-  description: string;
-  images: string[];
-  price: number;
-  brand: string;
-  rating: number;
-  numReviews: number;
-  stock: number;
-  isFeatured: boolean;
-  banner: string | null;
-}
+import { Product } from "@/types";
 
 interface ProductCardProps {
   product: Product;
@@ -40,7 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
         />
       </CardHeader>
       <CardContent className="flex-1 p-4">
-        <Link href={`/product/${product.slug}`} className="hover:underline">
+        <Link href={`/product/${product.id}`} className="hover:underline">
           <h3 className="text-lg font-semibold">{product.name}</h3>
         </Link>
         <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
