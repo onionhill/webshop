@@ -28,3 +28,24 @@ export const updateProductSchema = z.object({
 export const deleteProductSchema = z.object({
   id: z.string().min(1, { message: "Id is required" }),
 });
+
+//schema for signing users in
+export const signInSchema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string().min(5, { message: "Password must be at least 6 characters long" }),
+});
+
+//schema for signing users up
+export const signUpSchema = z
+  .object({
+    name: z.string().min(3, { message: "Name must be at least 3 characters long" }),
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
+    confirmPassword: z
+      .string()
+      .min(6, { message: "Confirm password must be at least 6 characters long" }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match",
+  });

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { MenuIcon, ShoppingCart, User } from "lucide-react";
+import { MenuIcon, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./mode-toggle";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import UserButton from "./user-button";
 
 const Menu = () => {
   return (
@@ -16,11 +17,7 @@ const Menu = () => {
             <ShoppingCart className="mr-2 h-4 w-4" /> Cart
           </Link>
         </Button>
-        <Button asChild>
-          <Link href="/login">
-            <User className="mr-2 h-4 w-4" /> Login
-          </Link>
-        </Button>
+        <UserButton />
       </nav>
       <nav className="md:hidden">
         <Sheet>
@@ -40,11 +37,7 @@ const Menu = () => {
                   <ShoppingCart className="mr-2 h-4 w-4" /> Cart
                 </Link>
               </Button>
-              <Button asChild variant="ghost" className="justify-start">
-                <Link href="/login">
-                  <User className="mr-2 h-4 w-4" /> Login
-                </Link>
-              </Button>
+              <UserButton />
             </div>
           </SheetContent>
         </Sheet>
